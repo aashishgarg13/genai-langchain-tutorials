@@ -11,4 +11,5 @@ chroma_db_notebook/
 faiss_index/
 faiss_index_notebook/
 ragas_evaluation_faiss/
+.DS_Store
 

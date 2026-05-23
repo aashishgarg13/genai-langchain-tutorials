@@ -68,7 +68,7 @@ jupyter notebook
 
 ## 📓 Notebooks Curriculum & Quick-Tutorial
 
-All notebooks are organized into a logical 14-step sequential curriculum:
+All notebooks are organized into a logical 13-step sequential curriculum:
 
 ### 1. Core LangChain & RAG Basics
 | # | Topic | Key Concept | File Link |
@@ -78,23 +78,22 @@ All notebooks are organized into a logical 14-step sequential curriculum:
 | **03** | Text Splitting Strategies | Recursive character splitting, overlap | [03_Text_Splitting_Strategies.ipynb](03_Text_Splitting_Strategies.ipynb) |
 | **04** | Embeddings & Representations | Text-to-vector space, Cosine similarity | [04_Embeddings_and_Vector_Representations.ipynb](04_Embeddings_and_Vector_Representations.ipynb) |
 | **05** | Vector Stores | Storing and searching vectors locally | [05_Vector_Stores.ipynb](05_Vector_Stores.ipynb) |
-| **06** | Simple RAG with LangChain | Connecting retriever and LLM in a chain | [06_Simple_RAG_LangChain.ipynb](06_Simple_RAG_LangChain.ipynb) |
-| **07** | Simple RAG with NVIDIA NIM | Deploying NIM-optimized RAG chains | [07_Simple_RAG_NVIDIA_NIM.ipynb](07_Simple_RAG_NVIDIA_NIM.ipynb) |
-| **08** | Local RAG with Ollama | Completely local, offline RAG pipeline | [08_Local_RAG_Ollama.ipynb](08_Local_RAG_Ollama.ipynb) |
+| **06** | Simple RAG Pipeline | Connecting retriever, prompt, and NIM LLM in a chain | [06_Simple_RAG.ipynb](06_Simple_RAG.ipynb) |
+| **07** | Local RAG with Ollama | Completely local, offline RAG pipeline | [07_Local_RAG_Ollama.ipynb](07_Local_RAG_Ollama.ipynb) |
 
 ### 2. Advanced RAG Techniques
 | # | Topic | Key Concept | File Link |
 |---|---|---|---|
-| **09** | Query Transformations | Rewrite-Retrieve-Read, Step-back, Sub-queries | [09_Query_Transformations.ipynb](09_Query_Transformations.ipynb) |
-| **10** | Fusion Retrieval | Multi-query generation, Reciprocal Rank Fusion (RRF) | [10_Fusion_Retrieval.ipynb](10_Fusion_Retrieval.ipynb) |
-| **11** | Reranking | Cross-encoder relevance context ordering | [11_Reranking.ipynb](11_Reranking.ipynb) |
-| **12** | External Index Retrievers | Live searchers (ArXiv, Wikipedia, Tavily) | [12_External_Index_Retrievers.ipynb](12_External_Index_Retrievers.ipynb) |
+| **08** | Query Transformations | Rewrite-Retrieve-Read, Step-back, Sub-queries | [08_Query_Transformations.ipynb](08_Query_Transformations.ipynb) |
+| **09** | Fusion Retrieval | Multi-query generation, Reciprocal Rank Fusion (RRF) | [09_Fusion_Retrieval.ipynb](09_Fusion_Retrieval.ipynb) |
+| **10** | Reranking | Cross-encoder relevance context ordering | [10_Reranking.ipynb](10_Reranking.ipynb) |
+| **11** | External Index Retrievers | Live searchers (ArXiv, Wikipedia, Tavily) | [11_External_Index_Retrievers.ipynb](11_External_Index_Retrievers.ipynb) |
 
 ### 3. RAG Evaluation & Observability
 | # | Topic | Key Concept | File Link |
 |---|---|---|---|
-| **13** | RAG Evaluation with Ragas | Ground-truth datasets & Ragas evaluation | [13_RAG_Evaluation_with_Ragas.ipynb](13_RAG_Evaluation_with_Ragas.ipynb) |
-| **14** | RAGAS Metrics Deep Dive | Faithfulness, Answer Relevancy, Context Recall | [14_RAGAS_Metrics_Deep_Dive.ipynb](14_RAGAS_Metrics_Deep_Dive.ipynb) |
+| **12** | RAG Evaluation with Ragas | Ground-truth datasets & Ragas evaluation | [12_RAG_Evaluation_with_Ragas.ipynb](12_RAG_Evaluation_with_Ragas.ipynb) |
+| **13** | RAGAS Metrics Deep Dive | Faithfulness, Answer Relevancy, Context Recall | [13_RAGAS_Metrics_Deep_Dive.ipynb](13_RAGAS_Metrics_Deep_Dive.ipynb) |
 
 ---
 
@@ -156,7 +155,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
   vectorstore.save_local("faiss_index")
   ```
 
-#### 06 & 07. Simple RAG with LangChain & NVIDIA NIM
+#### 06. Simple RAG Pipeline
 * **Concept**: End-to-end RAG pipeline. The user query retrieves similar document chunks from the vector store, wraps them in a prompt as context, and feeds them into the LLM to generate a factual response.
 * **Code Pattern**:
   ```python
@@ -180,7 +179,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
   response = rag_chain.invoke("What is the platform's SLA?")
   ```
 
-#### 08. Local RAG with Ollama
+#### 07. Local RAG with Ollama
 * **Concept**: Orchestrating a private, completely offline, and local RAG system running LLMs (like Llama 3) and Embeddings models locally on your system using Ollama.
 * **Code Pattern**:
   ```python
@@ -195,7 +194,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
 
 ### Module 2: Advanced RAG Techniques
 
-#### 09. Query Transformations
+#### 08. Query Transformations
 * **Concept**: Rewriting, expanding, or decomposing a query to improve retrieval precision. Includes **Rewrite-Retrieve-Read** (rewriting vague queries), **Step-Back Prompting** (generating high-level abstraction queries), and **Sub-Query Generation** (splitting complex questions into smaller parts).
 * **Code Pattern**:
   ```python
@@ -204,7 +203,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
   better_query = rewriter_chain.invoke({"query": "sla details"})
   ```
 
-#### 10. Fusion Retrieval
+#### 09. Fusion Retrieval
 * **Concept**: Generating multiple search query variations, executing parallel retrievals for all queries, and combining results using **Reciprocal Rank Fusion (RRF)** to rank document chunks based on their consensus relevance across queries.
 * **Code Pattern**:
   ```python
@@ -217,7 +216,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
       return scores
   ```
 
-#### 11. Reranking
+#### 10. Reranking
 * **Concept**: Similarity search (Bi-Encoders) is fast but misses deep semantic context. Reranking uses a slower, highly accurate **Cross-Encoder** model to evaluate the relationship between the query and retrieved documents, re-ordering chunks to place the most relevant information at the top.
 * **Code Pattern**:
   ```python
@@ -227,7 +226,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
   reranked_docs = reranker.compress_documents(query="SLA details", documents=retrieved_docs)
   ```
 
-#### 12. External Index Retrievers
+#### 11. External Index Retrievers
 * **Concept**: Searching live external databases (e.g. academic papers via **ArxivRetriever**, general knowledge via **WikipediaRetriever**, or live web indexing via **TavilySearchAPIRetriever**) instead of static local vector stores.
 * **Code Pattern**:
   ```python
@@ -245,7 +244,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
 
 ### Module 3: RAG Evaluation & Observability
 
-#### 13. RAG Evaluation with Ragas
+#### 12. RAG Evaluation with Ragas
 * **Concept**: Rigorous testing of RAG performance. This involves generating synthetic test datasets (Question, Context, Ground Truth answers) using an LLM, and executing evaluations with the **Ragas** framework.
 * **Code Pattern**:
   ```python
@@ -262,7 +261,7 @@ All notebooks are organized into a logical 14-step sequential curriculum:
   result = evaluate(dataset=dataset, metrics=[Faithfulness(), AnswerRelevancy()])
   ```
 
-#### 14. Ragas Metrics Deep Dive
+#### 13. Ragas Metrics Deep Dive
 * **Concept**: Evaluating quality across Ragas metrics:
   * **Faithfulness**: Measures if the generated answer is strictly supported by the retrieved context (detects hallucinations).
   * **Answer Relevancy**: Measures if the generated answer addresses the actual user question.
