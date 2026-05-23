@@ -1,0 +1,14 @@
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+.env
+.venv/
+__pycache__/
+.vscode/
+chroma_db/
+chroma_db_notebook/
+faiss_index/
+faiss_index_notebook/
+ragas_evaluation_faiss/
+
