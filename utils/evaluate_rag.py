@@ -11,9 +11,10 @@ Dependencies:
 Custom modules:
 - helper_functions (for RAG-specific operations)
 """
-
 import json
 from typing import List, Tuple, Dict, Any, Optional
+from dotenv import load_dotenv
+load_dotenv()
 
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_core.prompts import PromptTemplate

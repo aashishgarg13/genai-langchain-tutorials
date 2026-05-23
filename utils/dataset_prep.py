@@ -22,6 +22,8 @@ import pickle
 from typing import Tuple, List, Optional, Dict
 from pathlib import Path
 from tqdm.auto import tqdm
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def prepare_climate_fever_vectors(
